@@ -1,0 +1,605 @@
+= 时空足迹 API 文档
+
+
+[[_overview]]
+== Overview
+时空足迹后台管理 API 网关接口
+
+
+=== Version information
+[%hardbreaks]
+__Version__ : 1.0.0
+
+
+=== URI scheme
+[%hardbreaks]
+__Host__ : localhost:8011
+__BasePath__ : /admin/api
+
+
+=== Tags
+
+* analysis-controller : Analysis Controller
+* user-back-controller : 后台用户API接口
+
+
+
+
+[[_paths]]
+== Paths
+
+[[_addusingpost]]
+=== 添加分析任务
+....
+POST /analysis/add
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|Type|Name|Description|Schema|Default
+|**Header**|**Authorization** +
+__required__|token|string|`"Bearer "`
+|**Body**|**addAnalysis** +
+__required__|addAnalysis|<<_addanalysis,AddAnalysis>>|
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_4e3465260d0b339c0ae101c8a6821732,ResponseMessage«object»>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* analysis-controller
+
+
+==== Example HTTP request
+
+===== Request path
+----
+/analysis/add
+----
+
+
+===== Request header
+[source,json]
+----
+"string"
+----
+
+
+===== Request body
+[source,json]
+----
+{
+  "endTime" : 1563690110263,
+  "name" : "string",
+  "phoneNumber" : "15636901102",
+  "startTime" : 1563690110263
+}
+----
+
+
+==== Example HTTP response
+
+===== Response 200
+[source,json]
+----
+{
+  "code" : 0,
+  "message" : "string",
+  "result" : "object"
+}
+----
+
+
+[[_exportrealtrackusingget]]
+=== 导出分析结果
+....
+GET /analysis/analysisResult/export
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|Type|Name|Description|Schema|Default
+|**Header**|**Authorization** +
+__required__|token|string|`"Bearer "`
+|**Query**|**contaceType** +
+__optional__|接触者类型：（密切接触或非密切接触）|string|
+|**Query**|**name** +
+__optional__|任务名称，会生成文件名|string|
+|**Query**|**taskId** +
+__optional__|taskId|string|
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* analysis-controller
+
+
+==== Example HTTP request
+
+===== Request path
+----
+/analysis/analysisResult/export
+----
+
+
+===== Request header
+[source,json]
+----
+"string"
+----
+
+
+===== Request query
+[source,json]
+----
+{
+  "contaceType" : "string",
+  "name" : "string",
+  "taskId" : "string"
+}
+----
+
+
+[[_delusingget]]
+=== 删除分析任务
+....
+GET /analysis/del
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|Type|Name|Description|Schema|Default
+|**Header**|**Authorization** +
+__required__|token|string|`"Bearer "`
+|**Query**|**id** +
+__optional__|id|integer (int32)|
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_4e3465260d0b339c0ae101c8a6821732,ResponseMessage«object»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* analysis-controller
+
+
+==== Example HTTP request
+
+===== Request path
+----
+/analysis/del
+----
+
+
+===== Request header
+[source,json]
+----
+"string"
+----
+
+
+===== Request query
+[source,json]
+----
+{
+  "id" : 0
+}
+----
+
+
+==== Example HTTP response
+
+===== Response 200
+[source,json]
+----
+{
+  "code" : 0,
+  "message" : "string",
+  "result" : "object"
+}
+----
+
+
+[[_queryusingpost]]
+=== 列表查询分析任务
+....
+POST /analysis/query
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|Type|Name|Description|Schema|Default
+|**Header**|**Authorization** +
+__required__|token|string|`"Bearer "`
+|**Query**|**IDCard** +
+__optional__|IDCard|string|
+|**Query**|**endTime** +
+__optional__|endTime|string|
+|**Query**|**name** +
+__optional__|name|string|
+|**Query**|**page** +
+__optional__|page|integer (int32)|
+|**Query**|**size** +
+__optional__|size|integer (int32)|
+|**Query**|**startTime** +
+__optional__|startTime|string|
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_4e3465260d0b339c0ae101c8a6821732,ResponseMessage«object»>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* analysis-controller
+
+
+==== Example HTTP request
+
+===== Request path
+----
+/analysis/query
+----
+
+
+===== Request header
+[source,json]
+----
+"string"
+----
+
+
+===== Request query
+[source,json]
+----
+{
+  "IDCard" : "string",
+  "endTime" : "string",
+  "name" : "string",
+  "page" : 0,
+  "size" : 0,
+  "startTime" : "string"
+}
+----
+
+
+==== Example HTTP response
+
+===== Response 200
+[source,json]
+----
+{
+  "code" : 0,
+  "message" : "string",
+  "result" : "object"
+}
+----
+
+
+[[_querystatisticsresultusingpost]]
+=== 查询统计任务
+....
+POST /analysis/queryStatisticsResult
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|Type|Name|Description|Schema|Default
+|**Header**|**Authorization** +
+__required__|token|string|`"Bearer "`
+|**Query**|**IDCard** +
+__optional__|IDCard|string|
+|**Query**|**endTime** +
+__optional__|endTime|string|
+|**Query**|**name** +
+__optional__|name|string|
+|**Query**|**page** +
+__optional__|page|integer (int32)|
+|**Query**|**phoneNumber** +
+__optional__|phoneNumber|string|
+|**Query**|**size** +
+__optional__|size|integer (int32)|
+|**Query**|**startTime** +
+__optional__|startTime|string|
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_4e3465260d0b339c0ae101c8a6821732,ResponseMessage«object»>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* analysis-controller
+
+
+==== Example HTTP request
+
+===== Request path
+----
+/analysis/queryStatisticsResult
+----
+
+
+===== Request header
+[source,json]
+----
+"string"
+----
+
+
+===== Request query
+[source,json]
+----
+{
+  "IDCard" : "string",
+  "endTime" : "string",
+  "name" : "string",
+  "page" : 0,
+  "phoneNumber" : "string",
+  "size" : 0,
+  "startTime" : "string"
+}
+----
+
+
+==== Example HTTP response
+
+===== Response 200
+[source,json]
+----
+{
+  "code" : 0,
+  "message" : "string",
+  "result" : "object"
+}
+----
+
+
+[[_loginusingpost]]
+=== login
+....
+POST /userback/login
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|Type|Name|Description|Schema|Default
+|**Header**|**Authorization** +
+__required__|token|string|`"Bearer "`
+|**Query**|**password** +
+__optional__|password|string|
+|**Query**|**username** +
+__optional__|username|string|
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_4e3465260d0b339c0ae101c8a6821732,ResponseMessage«object»>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* user-back-controller
+
+
+==== Example HTTP request
+
+===== Request path
+----
+/userback/login
+----
+
+
+===== Request header
+[source,json]
+----
+"string"
+----
+
+
+===== Request query
+[source,json]
+----
+{
+  "password" : "string",
+  "username" : "string"
+}
+----
+
+
+==== Example HTTP response
+
+===== Response 200
+[source,json]
+----
+{
+  "code" : 0,
+  "message" : "string",
+  "result" : "object"
+}
+----
+
+
+
+
+[[_definitions]]
+== Definitions
+
+[[_addanalysis]]
+=== AddAnalysis
+添加分析任务所需实体
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**endTime** +
+__optional__|结束时间,时间戳 +
+**Example** : `1563690110263`|integer (int64)
+|**name** +
+__optional__|分析名称 +
+**Example** : `"string"`|string
+|**phoneNumber** +
+__optional__|手机号 +
+**Example** : `"15636901102"`|string
+|**startTime** +
+__optional__|开始时间,时间戳 +
+**Example** : `1563690110263`|integer (int64)
+|===
+
+
+[[_4e3465260d0b339c0ae101c8a6821732]]
+=== ResponseMessage«object»
+消息响应
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**code** +
+__optional__|返回的编码 +
+**Example** : `0`|integer (int32)
+|**message** +
+__optional__|返回的消息 +
+**Example** : `"string"`|string
+|**result** +
+__optional__|返回结果 +
+**Example** : `"object"`|object
+|===
+
+
+
+
+
