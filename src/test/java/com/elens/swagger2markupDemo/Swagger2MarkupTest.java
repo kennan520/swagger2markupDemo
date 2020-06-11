@@ -4,6 +4,7 @@ import io.github.swagger2markup.Swagger2MarkupConfig;
 import io.github.swagger2markup.Swagger2MarkupConverter;
 import io.github.swagger2markup.builder.Swagger2MarkupConfigBuilder;
 import io.github.swagger2markup.markup.builder.MarkupLanguage;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
@@ -58,7 +59,7 @@ public class Swagger2MarkupTest {
 //                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint())))
 //                .andExpect(status().isOk());
 //    }
-    @org.junit.jupiter.api.Test
+    @Test
     public void generateAsciiDocs() throws Exception {
         //    输出Ascii格式
         Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
@@ -66,7 +67,7 @@ public class Swagger2MarkupTest {
                 .withMarkupLanguage(MarkupLanguage.ASCIIDOC)
                 .build();
 
-        Swagger2MarkupConverter.from(new URL("http://localhost:8011/admin/api/v2/api-docs"))
+        Swagger2MarkupConverter.from(new URL("http://localhost:8012/building-admin/api/v2/api-docs"))
                 .withConfig(config)
                 .build()
                 .toFile(Paths.get("src/docs/asciidoc/generated/index"));
